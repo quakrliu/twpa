@@ -128,7 +128,7 @@ blockquote {
 	margin: 1.5em 0;
 	font-size: 1.15em;
 	font-style: italic;
-	color: rgb(var(--gray));
+	color: rgb(var(--gray-dark));
 }
 
 hr {
