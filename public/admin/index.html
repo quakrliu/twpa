@@ -5,14 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>TWPA Admin</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    window.netlifyIdentity && window.netlifyIdentity.init({
-      APIUrl: "https://tangerine-crostata-6bdc5b.netlify.app/.netlify/identity"
-    });
-  </script>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.init({
+        APIUrl: "https://tangerine-crostata-6bdc5b.netlify.app/.netlify/identity"
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
+  <script>
+    if (window.CMS) {
+      window.CMS.registerPreviewStyle("https://twpa.info/admin/../styles/global.css");
+    }
+  </script>
 </body>
 </html>
