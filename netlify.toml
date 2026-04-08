@@ -1,0 +1,3 @@
+[build]
+  command = "echo 'identity only'"
+  publish = "netlify-identity"
