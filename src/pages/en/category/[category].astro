@@ -37,7 +37,7 @@ const posts = (await getCollection('blog'))
 		<BaseHead title={`${label} — ${SITE_TITLE_EN}`} description={`Articles about ${label}`} />
 	</head>
 	<body>
-		<Header />
+		<Header lang="en" />
 		<main>
 			<h1>{label}</h1>
 			{posts.length === 0 && <p>No articles in this category yet. Check back soon.</p>}
