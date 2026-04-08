@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
   branch: master
+  identity_url: "https://tangerine-crostata-6bdc5b.netlify.app/.netlify/identity"
+  gateway_url: "https://tangerine-crostata-6bdc5b.netlify.app/.netlify/git"
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

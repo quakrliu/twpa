@@ -6,6 +6,11 @@
   <meta name="robots" content="noindex" />
   <title>TWPA Admin</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    window.netlifyIdentity && window.netlifyIdentity.init({
+      APIUrl: "https://tangerine-crostata-6bdc5b.netlify.app/.netlify/identity"
+    });
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
