@@ -1,0 +1,200 @@
+/*
+  TWPA — True Wisdom Practitioners Association
+  Brand: Lotus gold + cream + warm neutrals
+  Taste skill: DESIGN_VARIANCE 8, MOTION_INTENSITY 6, VISUAL_DENSITY 4
+*/
+
+:root {
+	--accent: #B8860B;
+	--accent-dark: #8B6914;
+	--accent-light: #D4A94C;
+	--cream: #FAF7F2;
+	--warm-white: #FEFCF8;
+	--lotus-pink: #E8C4B8;
+	--gold: #C9A96E;
+	--black: 35, 31, 28;
+	--gray: 120, 110, 100;
+	--gray-light: 235, 230, 222;
+	--gray-dark: 55, 48, 42;
+	--gray-gradient: rgba(var(--gray-light), 50%), var(--cream);
+	--box-shadow:
+		0 2px 6px rgba(var(--gray), 15%), 0 8px 24px rgba(var(--gray), 20%);
+}
+
+@font-face {
+	font-family: "Atkinson";
+	src: url("/fonts/atkinson-regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Atkinson";
+	src: url("/fonts/atkinson-bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+body {
+	font-family: "Atkinson", "Georgia", serif;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	background: var(--cream);
+	background-size: 100% 600px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	color: rgb(var(--gray-dark));
+	font-size: 19px;
+	line-height: 1.8;
+}
+
+main {
+	width: 760px;
+	max-width: calc(100% - 2em);
+	margin: auto;
+	padding: 3em 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 0.5rem 0;
+	color: rgb(var(--black));
+	line-height: 1.3;
+	letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.15em; }
+
+strong, b {
+	font-weight: 700;
+}
+
+a {
+	color: var(--accent);
+	transition: color 0.2s ease;
+}
+a:hover {
+	color: var(--accent-dark);
+}
+
+p {
+	margin-bottom: 1em;
+	max-width: 65ch;
+}
+
+.prose p {
+	margin-bottom: 1.8em;
+}
+
+textarea {
+	width: 100%;
+	font-size: 16px;
+}
+input {
+	font-size: 16px;
+}
+
+table {
+	width: 100%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 6px;
+}
+
+code {
+	padding: 2px 5px;
+	background-color: rgb(var(--gray-light));
+	border-radius: 2px;
+}
+pre {
+	padding: 1.5em;
+	border-radius: 8px;
+}
+pre > code {
+	all: unset;
+}
+
+blockquote {
+	border-left: 3px solid var(--gold);
+	padding: 0 0 0 20px;
+	margin: 1.5em 0;
+	font-size: 1.15em;
+	font-style: italic;
+	color: rgb(var(--gray));
+}
+
+hr {
+	border: none;
+	border-top: 1px solid rgb(var(--gray-light));
+	margin: 2.5em 0;
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 17px;
+	}
+	main {
+		padding: 1em;
+	}
+}
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Newsletter signup */
+.newsletter-form {
+	background: var(--warm-white);
+	border: 1px solid rgb(var(--gray-light));
+	border-radius: 8px;
+	padding: 2em;
+	margin: 2em 0;
+	text-align: center;
+}
+
+.newsletter-form h3 {
+	color: var(--accent-dark);
+	margin-bottom: 0.5em;
+}
+
+.newsletter-form input[type="email"] {
+	padding: 0.75em 1em;
+	border: 1px solid rgb(var(--gray-light));
+	border-radius: 6px;
+	width: 60%;
+	max-width: 300px;
+	margin-right: 0.5em;
+}
+
+.newsletter-form button {
+	padding: 0.75em 1.5em;
+	background: var(--accent);
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1em;
+	transition: background 0.2s ease;
+}
+
+.newsletter-form button:hover {
+	background: var(--accent-dark);
+}

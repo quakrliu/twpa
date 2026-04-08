@@ -1,0 +1,138 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<img src="/images/banner.png" alt="True Wisdom Practitioners Association" class="hero-banner" />
+				<h1>True Wisdom Practitioners Association</h1>
+				<p class="hero-desc">
+					A welcoming space for all who are drawn to the timeless wisdom of the East.
+					Together, we explore the depths of Buddhist and Chan teachings — cultivating
+					mindful living, plant-based wellness, and a gentle, grounded approach to emotional well-being.
+				</p>
+			</section>
+
+			<section class="latest-posts">
+				<h2>Latest Articles</h2>
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									<h4 class="post-title">{post.data.title}</h4>
+									<p class="post-date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+									{post.data.description && (
+										<p class="post-desc">{post.data.description}</p>
+									)}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="newsletter-form">
+				<h3>Stay Connected</h3>
+				<p>Receive our latest articles on mindful living, Buddhist wisdom, and upcoming events in Oceania.</p>
+				<form>
+					<input type="email" placeholder="Your email address" required />
+					<button type="submit">Subscribe</button>
+				</form>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		text-align: center;
+		margin-bottom: 3em;
+	}
+	.hero-banner {
+		width: 100%;
+		max-width: 480px;
+		margin: 0 auto 1.5em;
+		border-radius: 8px;
+	}
+	.hero h1 {
+		font-size: 2.2em;
+		color: var(--accent-dark);
+		margin-bottom: 0.5em;
+	}
+	.hero-desc {
+		font-size: 1.1em;
+		color: rgb(var(--gray));
+		max-width: 55ch;
+		margin: 0 auto;
+		line-height: 1.7;
+	}
+	.latest-posts {
+		margin: 3em 0;
+	}
+	.latest-posts h2 {
+		font-size: 1.6em;
+		border-bottom: 2px solid var(--gold);
+		padding-bottom: 0.3em;
+		margin-bottom: 1em;
+	}
+	.latest-posts ul {
+		list-style: none;
+		padding: 0;
+	}
+	.latest-posts li {
+		margin-bottom: 1.5em;
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.latest-posts li:last-child {
+		border-bottom: none;
+	}
+	.latest-posts a {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+	}
+	.latest-posts a:hover .post-title {
+		color: var(--accent);
+	}
+	.post-title {
+		margin: 0 0 0.2em;
+		font-size: 1.2em;
+		transition: color 0.2s ease;
+	}
+	.post-date {
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+		margin: 0 0 0.4em;
+	}
+	.post-desc {
+		font-size: 0.95em;
+		color: rgb(var(--gray));
+		margin: 0;
+	}
+	@media (max-width: 720px) {
+		.hero h1 {
+			font-size: 1.8em;
+		}
+	}
+</style>
