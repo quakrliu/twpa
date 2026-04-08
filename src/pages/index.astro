@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-TW">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
@@ -50,13 +50,29 @@ const posts = (await getCollection('blog')).sort(
 				</ul>
 			</section>
 
+			<section class="categories">
+				<h2>Explore Topics</h2>
+				<div class="category-grid">
+					<a href="/category/mindful-living" class="cat-card">Mindful Living</a>
+					<a href="/category/plant-based-wellness" class="cat-card">Plant-Based Wellness</a>
+					<a href="/category/emotional-wellbeing" class="cat-card">Emotional Well-Being</a>
+					<a href="/category/chan-meditation" class="cat-card">Chan & Meditation</a>
+					<a href="/category/community-events" class="cat-card">Community Events</a>
+				</div>
+			</section>
+
 			<section class="newsletter-form">
 				<h3>Stay Connected</h3>
 				<p>Receive our latest articles on mindful living, Buddhist wisdom, and upcoming events in Oceania.</p>
-				<form>
-					<input type="email" placeholder="Your email address" required />
+				<form
+					action="https://subscribe-forms.beehiiv.com/TWPA_PUBLICATION_ID"
+					method="POST"
+					target="_blank"
+				>
+					<input type="email" name="email" placeholder="Your email address" required />
 					<button type="submit">Subscribe</button>
 				</form>
+				<p class="form-note">No spam. Unsubscribe anytime.</p>
 			</section>
 		</main>
 		<Footer />
@@ -129,6 +145,42 @@ const posts = (await getCollection('blog')).sort(
 		font-size: 0.95em;
 		color: rgb(var(--gray));
 		margin: 0;
+	}
+	.categories {
+		margin: 3em 0;
+	}
+	.categories h2 {
+		font-size: 1.6em;
+		border-bottom: 2px solid var(--gold);
+		padding-bottom: 0.3em;
+		margin-bottom: 1em;
+	}
+	.category-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 0.8em;
+	}
+	.cat-card {
+		display: block;
+		padding: 1em;
+		background: var(--warm-white, #FEFCF8);
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		text-align: center;
+		text-decoration: none;
+		color: rgb(var(--gray-dark));
+		font-weight: 600;
+		font-size: 0.95em;
+		transition: border-color 0.2s ease, color 0.2s ease;
+	}
+	.cat-card:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.form-note {
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+		margin-top: 0.5em;
 	}
 	@media (max-width: 720px) {
 		.hero h1 {

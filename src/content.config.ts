@@ -14,6 +14,15 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			category: z.enum([
+				'mindful-living',
+				'plant-based-wellness',
+				'emotional-wellbeing',
+				'chan-meditation',
+				'community-events',
+			]).default('mindful-living'),
+			lang: z.enum(['en', 'zh']).default('zh'),
+			tags: z.array(z.string()).optional(),
 		}),
 });
 

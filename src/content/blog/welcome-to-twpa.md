@@ -2,6 +2,8 @@
 title: "Welcome to True Wisdom Practitioners Association"
 description: "Introducing TWPA — a welcoming space for exploring Buddhist and Chan teachings in Oceania."
 pubDate: 2026-04-08
+category: "mindful-living"
+lang: "en"
 tags: ["welcome", "buddhism", "chan", "community"]
 ---
 

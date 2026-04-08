@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "pubDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "heroImage": {
+      "type": "string"
+    },
+    "category": {
+      "default": "mindful-living",
+      "type": "string",
+      "enum": [
+        "mindful-living",
+        "plant-based-wellness",
+        "emotional-wellbeing",
+        "chan-meditation",
+        "community-events"
+      ]
+    },
+    "lang": {
+      "default": "zh",
+      "type": "string",
+      "enum": [
+        "en",
+        "zh"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "pubDate"
+  ]
+}
