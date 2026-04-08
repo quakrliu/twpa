@@ -1,0 +1,54 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+locale: "zh_Hant"
+
+collections:
+  - name: "blog-zh"
+    label: "中文文章"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}-zh"
+    filter:
+      field: lang
+      value: zh
+    fields:
+      - { label: "標題", name: "title", widget: "string" }
+      - { label: "摘要", name: "description", widget: "string" }
+      - { label: "發布日期", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "分類", name: "category", widget: "select", options: ["mindful-living", "plant-based-wellness", "emotional-wellbeing", "chan-meditation", "community-events"], default: "mindful-living" }
+      - { label: "語言", name: "lang", widget: "hidden", default: "zh" }
+      - { label: "標籤", name: "tags", widget: "list", required: false }
+      - { label: "封面圖片", name: "heroImage", widget: "image", required: false }
+      - { label: "內容", name: "body", widget: "markdown" }
+
+  - name: "blog-en"
+    label: "English Articles"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}-en"
+    filter:
+      field: lang
+      value: en
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Category", name: "category", widget: "select", options: ["mindful-living", "plant-based-wellness", "emotional-wellbeing", "chan-meditation", "community-events"], default: "mindful-living" }
+      - { label: "Language", name: "lang", widget: "hidden", default: "en" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "頁面"
+    files:
+      - label: "關於我們"
+        name: "about"
+        file: "src/pages/about.astro"
+        fields:
+          - { label: "內容", name: "body", widget: "markdown" }
