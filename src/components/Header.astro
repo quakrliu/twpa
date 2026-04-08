@@ -1,5 +1,4 @@
 ---
-import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
@@ -9,15 +8,33 @@ import HeaderLink from './HeaderLink.astro';
 			<img src="/images/logo.jpg" alt="TWPA Logo" class="logo" />
 			<span class="site-name">TWPA</span>
 		</a>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/category/mindful-living">Mindful Living</HeaderLink>
-			<HeaderLink href="/category/chan-meditation">Chan</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+		<div class="nav-right">
+			<div class="internal-links">
+				<HeaderLink href="/">首頁</HeaderLink>
+				<HeaderLink href="/blog">文章</HeaderLink>
+				<HeaderLink href="/about">關於我們</HeaderLink>
+			</div>
+			<div class="lang-toggle">
+				<a href="/" class="lang-btn active" data-lang="zh">中文</a>
+				<span class="lang-sep">|</span>
+				<a href="/en" class="lang-btn" data-lang="en">EN</a>
+			</div>
 		</div>
 	</nav>
 </header>
+
+<script>
+	// Simple client-side language toggle
+	const path = window.location.pathname;
+	const isEn = path.startsWith('/en');
+	document.querySelectorAll('.lang-btn').forEach(btn => {
+		if (btn.getAttribute('data-lang') === 'en' && isEn) {
+			btn.classList.add('active');
+			btn.previousElementSibling?.previousElementSibling?.classList.remove('active');
+		}
+	});
+</script>
+
 <style>
 	header {
 		margin: 0;
@@ -29,7 +46,7 @@ import HeaderLink from './HeaderLink.astro';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: 760px;
+		max-width: 1080px;
 		margin: 0 auto;
 	}
 	.logo-link {
@@ -51,6 +68,14 @@ import HeaderLink from './HeaderLink.astro';
 		color: rgb(var(--black));
 		letter-spacing: 0.05em;
 	}
+	.nav-right {
+		display: flex;
+		align-items: center;
+		gap: 1.5em;
+	}
+	.internal-links {
+		display: flex;
+	}
 	nav a {
 		padding: 1em 0.5em;
 		color: rgb(var(--gray-dark));
@@ -65,9 +90,35 @@ import HeaderLink from './HeaderLink.astro';
 		border-bottom-color: var(--accent);
 		color: var(--accent-dark);
 	}
+	.lang-toggle {
+		display: flex;
+		align-items: center;
+		gap: 0.3em;
+		font-size: 0.85em;
+	}
+	.lang-btn {
+		padding: 0.3em 0.5em !important;
+		border-bottom: none !important;
+		color: rgb(var(--gray)) !important;
+		font-weight: 400;
+	}
+	.lang-btn.active {
+		color: var(--accent-dark) !important;
+		font-weight: 700;
+	}
+	.lang-sep {
+		color: rgb(var(--gray-light));
+	}
 	@media (max-width: 720px) {
 		.site-name {
 			display: none;
+		}
+		.internal-links {
+			gap: 0;
+		}
+		nav a {
+			padding: 1em 0.3em;
+			font-size: 0.85em;
 		}
 	}
 </style>

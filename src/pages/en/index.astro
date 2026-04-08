@@ -1,36 +1,37 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION_EN, SITE_TITLE_EN } from '../../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('blog'))
+	.filter((p) => p.data.lang === 'en')
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
-<html lang="zh-TW">
+<html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE_EN} description={SITE_DESCRIPTION_EN} />
 	</head>
 	<body>
 		<Header />
 		<main>
 			<section class="hero">
-				<img src="/images/banner.png" alt="正覺智慧修行協會" class="hero-banner" />
-				<h1>正覺智慧修行協會</h1>
-				<p class="hero-sub">True Wisdom Practitioners Association</p>
+				<img src="/images/banner.png" alt="True Wisdom Practitioners Association" class="hero-banner" />
+				<h1>True Wisdom Practitioners Association</h1>
 				<p class="hero-desc">
-					歡迎所有嚮往東方智慧的朋友。我們一起探索佛法與禪宗的深邃教義——在日常中培養正念生活、健康飲食與平靜的身心。
+					A welcoming space for all who are drawn to the timeless wisdom of the East.
+					Together, we explore the depths of Buddhist and Chan teachings — cultivating
+					mindful living, plant-based wellness, and a gentle, grounded approach to emotional well-being.
 				</p>
 			</section>
 
 			<div class="content-layout">
 				<section class="latest-posts">
-					<h2>最新文章</h2>
+					<h2>Latest Articles</h2>
 					<ul>
 						{
 							posts.map((post) => (
@@ -52,28 +53,28 @@ const posts = (await getCollection('blog')).sort(
 
 				<aside class="sidebar">
 					<div class="sidebar-section">
-						<h3>探索主題</h3>
+						<h3>Explore Topics</h3>
 						<div class="category-list">
-							<a href="/category/mindful-living" class="cat-card">正念生活</a>
-							<a href="/category/plant-based-wellness" class="cat-card">蔬食與健康</a>
-							<a href="/category/emotional-wellbeing" class="cat-card">情緒管理</a>
-							<a href="/category/chan-meditation" class="cat-card">禪修與冥想</a>
-							<a href="/category/community-events" class="cat-card">活動與講座</a>
+							<a href="/category/mindful-living" class="cat-card">Mindful Living</a>
+							<a href="/category/plant-based-wellness" class="cat-card">Plant-Based Wellness</a>
+							<a href="/category/emotional-wellbeing" class="cat-card">Emotional Well-Being</a>
+							<a href="/category/chan-meditation" class="cat-card">Chan & Meditation</a>
+							<a href="/category/community-events" class="cat-card">Community Events</a>
 						</div>
 					</div>
 
 					<div class="sidebar-section newsletter-form">
-						<h3>訂閱電子報</h3>
-						<p>接收最新的正念生活、佛法智慧與大洋洲活動資訊。</p>
+						<h3>Stay Connected</h3>
+						<p>Receive our latest articles on mindful living, Buddhist wisdom, and upcoming events.</p>
 						<form
 							action="https://subscribe-forms.beehiiv.com/TWPA_PUBLICATION_ID"
 							method="POST"
 							target="_blank"
 						>
-							<input type="email" name="email" placeholder="請輸入您的 Email" required />
-							<button type="submit">訂閱</button>
+							<input type="email" name="email" placeholder="Your email address" required />
+							<button type="submit">Subscribe</button>
 						</form>
-						<p class="form-note">不會寄送垃圾郵件，隨時可以退訂。</p>
+						<p class="form-note">No spam. Unsubscribe anytime.</p>
 					</div>
 				</aside>
 			</div>
@@ -96,13 +97,7 @@ const posts = (await getCollection('blog')).sort(
 	.hero h1 {
 		font-size: 2.2em;
 		color: var(--accent-dark);
-		margin-bottom: 0.2em;
-	}
-	.hero-sub {
-		font-size: 1em;
-		color: rgb(var(--gray));
-		margin: 0 auto 1em;
-		letter-spacing: 0.05em;
+		margin-bottom: 0.5em;
 	}
 	.hero-desc {
 		font-size: 1.1em;
